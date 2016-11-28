@@ -37,6 +37,16 @@ function draw() {
 
 }
 
+// function glow(lngxS, latyS) {
+//   var x = map(lngxS, -91.29, -90.89, 0, width);
+//   var y = map(latyS, 30.71, 30.31, 0, height);
+//   var opac = random(1, 4);
+//   fill(200, 200, 180, opac);
+//   ellipse(x, y, dia*10);
+//   fill(200, 200, 180, opac/2);
+//   ellipse(x, y, dia*24);
+// }
+
 function streetLight(lngxS, latyS) {
   var x = map(lngxS, -91.29, -90.89, 0, width);
   var y = map(latyS, 30.71, 30.31, 0, height);
