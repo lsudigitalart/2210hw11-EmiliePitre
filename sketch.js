@@ -2,9 +2,10 @@
 
 var street;
 var traffic;
-var present;
+// var present; wanted to only display known active streetlights, caused even slower load times
 var dia = 1;
-var opac;
+var opac
+var time
 
 function preload() {
   street = loadTable("streetlights.csv", "header");
@@ -12,9 +13,10 @@ function preload() {
 }
 
 function setup() {
-  frameRate(4);
-  createCanvas(1000, 1000);
+  createCanvas(800, 800);
   noStroke();
+  textFont("Amatic SC");
+  textAlign(CENTER);
 }
 
 function draw() {
@@ -23,10 +25,7 @@ function draw() {
   for (var i = 0; i < street.getRowCount(); i++) {
     var lngxS = street.getNum(i, "LONGITUDE");
     var latyS = street.getNum(i, "LATITUDE");
-    var present = street.getString(i, "LIGHT PRESENT");
-    if (present = "Yes") {
-      streetLight(lngxS, latyS);
-    }
+    streetLight(lngxS, latyS);
   }
 
   for (var i = 0; i < traffic.getRowCount(); i++) {
@@ -35,23 +34,33 @@ function draw() {
       trafficLight(lngxT, latyT);
   }
 
-}
+  textSize(42);
+  fill(200, 200, 180, 200);
+  text("Baton Rouge:", 600, 100);
+  time = millis();
+  if (time < 10000) {
+    var subtitle = "A Nightscape"
+    fill(200, 200, 180, 150);
+    text(subtitle, 600, 150);
+  } else {
+    push();
+    strokeWeight(10);
+    strokeJoin(ROUND)
+    opac = random(10, 20);
+    stroke(200, 200, 180, opac)
 
-// function glow(lngxS, latyS) {
-//   var x = map(lngxS, -91.29, -90.89, 0, width);
-//   var y = map(latyS, 30.71, 30.31, 0, height);
-//   var opac = random(1, 4);
-//   fill(200, 200, 180, opac);
-//   ellipse(x, y, dia*10);
-//   fill(200, 200, 180, opac/2);
-//   ellipse(x, y, dia*24);
-// }
+    var subtitle = "A Lightscape"
+    opac = random(100, 200);
+    fill(200, 200, 180, opac);
+    text(subtitle, 600, 150);
+    pop();
+  }
+
+}
 
 function streetLight(lngxS, latyS) {
   var x = map(lngxS, -91.29, -90.89, 0, width);
   var y = map(latyS, 30.71, 30.31, 0, height);
-  // fill(200, 200, 190, 1); //glow
-  // ellipse(x, y, dia*20);
   fill(200, 200, 180, 200);
   ellipse(x, y, dia);
 }
