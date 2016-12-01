@@ -2,7 +2,8 @@
 
 var street;
 var traffic;
-// var present; wanted to only display known active streetlights, caused even slower load times
+// var present;
+  // wanted to only display known active streetlights, omitted due to load times
 var dia = 1;
 var opac
 var time
