@@ -73,22 +73,22 @@ function trafficLight(lngxT, latyT) {
   //red light
   var opacR = random (100, 255);
   fill(255, 100, 100, opacR/10);
-  ellipse(x, y - 3, dia*30);
+  ellipse(x, y - 3, dia*14);
   fill(200, 100, 100, opacR);
-  ellipse(x, y - 3, dia*6);
+  ellipse(x, y - 3, dia*3);
 
   //yellow light
   var opacY = random (100, 255);
   fill(255, 255, 100, opacY/10);
-  ellipse(x, y, dia*30);
+  ellipse(x, y, dia*14);
   fill(200, 200, 100, opacY);
-  ellipse(x, y, dia*6);
+  ellipse(x, y, dia*3);
 
   //green light
   var opacG = random (100, 255);
   fill(100, 255, 100, opacG/10);
-  ellipse(x, y + 3, dia*30);
+  ellipse(x, y + 3, dia*14);
   fill(100, 200, 100, opacG);
-  ellipse(x, y + 3, dia*6);
+  ellipse(x, y + 3, dia*3);
 
 }
